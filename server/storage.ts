@@ -1,38 +1,34 @@
-import { type User, type InsertUser } from "@shared/schema";
-import { randomUUID } from "crypto";
-
-// modify the interface with any CRUD methods
-// you might need
+import { db } from "./db";
+import { studentProfiles, scholarshipMatches } from "@shared/schema";
+import type { InsertStudentProfile, StudentProfile, ScholarshipMatch } from "@shared/schema";
+import { eq } from "drizzle-orm";
 
 export interface IStorage {
-  getUser(id: string): Promise<User | undefined>;
-  getUserByUsername(username: string): Promise<User | undefined>;
-  createUser(user: InsertUser): Promise<User>;
+  createProfile(profile: InsertStudentProfile): Promise<StudentProfile>;
+  getProfile(id: number): Promise<StudentProfile | undefined>;
+  getMatches(profileId: number): Promise<ScholarshipMatch[]>;
+  createMatches(matches: Omit<ScholarshipMatch, "id">[]): Promise<ScholarshipMatch[]>;
 }
 
-export class MemStorage implements IStorage {
-  private users: Map<string, User>;
-
-  constructor() {
-    this.users = new Map();
+export class DatabaseStorage implements IStorage {
+  async createProfile(insertProfile: InsertStudentProfile): Promise<StudentProfile> {
+    const [profile] = await db.insert(studentProfiles).values(insertProfile).returning();
+    return profile;
   }
 
-  async getUser(id: string): Promise<User | undefined> {
-    return this.users.get(id);
+  async getProfile(id: number): Promise<StudentProfile | undefined> {
+    const [profile] = await db.select().from(studentProfiles).where(eq(studentProfiles.id, id));
+    return profile;
   }
 
-  async getUserByUsername(username: string): Promise<User | undefined> {
-    return Array.from(this.users.values()).find(
-      (user) => user.username === username,
-    );
+  async getMatches(profileId: number): Promise<ScholarshipMatch[]> {
+    return await db.select().from(scholarshipMatches).where(eq(scholarshipMatches.profileId, profileId));
   }
 
-  async createUser(insertUser: InsertUser): Promise<User> {
-    const id = randomUUID();
-    const user: User = { ...insertUser, id };
-    this.users.set(id, user);
-    return user;
+  async createMatches(matches: Omit<ScholarshipMatch, "id">[]): Promise<ScholarshipMatch[]> {
+    if (matches.length === 0) return [];
+    return await db.insert(scholarshipMatches).values(matches).returning();
   }
 }
 
-export const storage = new MemStorage();
+export const storage = new DatabaseStorage();
