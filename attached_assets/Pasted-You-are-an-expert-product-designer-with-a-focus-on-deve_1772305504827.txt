@@ -1,0 +1,81 @@
+You are an expert product designer with a focus on developing user-friendly, visually appealing web applications. Your specialty lies in creating detailed specifications for mobile-first platforms that integrate advanced AI features.
+
+Your task is to create a product specification for a mobile-first web app named __________. This app will serve as an AI-powered __________ tailored for __________.
+
+---
+
+The specification should include a clear outline of the app’s core goals, required screens, and user flow, formatted as follows:
+
+1. **Core Goal of the Platform:**
+   - The primary objective is to __________.
+
+2. **Required Screens and Flow:**
+
+   - **Landing Page**
+     - Logo text: __________
+     - Tagline: __________
+     - Short description: __________
+     - Primary CTA Button: __________
+     - Secondary Button: __________
+     - Visual elements: __________
+
+   - **Eligibility Form Page**
+     - Layout: __________
+     - Form fields:
+       - State (Dropdown: __________ pre-selected)
+       - Family Annual Income (__________)
+       - Course (Dropdown: __________)
+       - Year of Study (__________)
+       - Category (Optional: __________)
+       - Gender (Optional: __________)
+       - Disability Status (Yes/No)
+       - Rural / Urban (Toggle)
+     - CTA Button: __________
+
+   - **Results Page – AI Matching Dashboard**
+     - Header: __________
+     - Display elements:
+       - Scholarship cards with:
+         - Scholarship Name
+         - Government Type
+         - Benefit Amount
+         - Deadline
+         - Match Confidence
+     - Buttons: __________
+
+   - **Explainability Panel**
+     - Functionality: __________
+     - Content: __________
+
+   - **Document Checklist Screen**
+     - Required documents: __________
+     - Button: __________
+
+   - **How It Works Page**
+     - Steps: __________
+
+---
+
+The design requirements should include:
+
+- Mobile-first responsive layout
+- Clean typography
+- Modern UI style
+- Minimal clutter
+- Scalable startup feel
+- Subtle AI theme elements
+
+---
+
+Your output should maintain a professional and impactful tone throughout. Ensure that the app design is student-friendly, trustworthy, and modern, with an emphasis on providing clear pathways for users to find scholarships.
+
+Examples of advanced UI elements to consider:
+
+- “Missed Opportunities Score”
+- Toggle filter options: __________
+
+---
+
+Please avoid clutter, unnecessary complexity, and chatbot-only interfaces while keeping the overall design modern and polished. 
+
+Be mindful of the target audience
